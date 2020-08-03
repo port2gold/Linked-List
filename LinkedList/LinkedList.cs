@@ -71,6 +71,21 @@ namespace LinkedList
             }
             return null;
         }
+        public bool Check(T value)
+        {
+            LinkedListNode<T> Current = head;
+            while(Current != null)
+            {
+                if (Current.Value.Equals(value))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
     }
 }
