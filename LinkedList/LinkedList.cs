@@ -101,6 +101,36 @@ namespace LinkedList
         {
 
         }
+        public void RemoveHead()
+        {
+            LinkedListNode<T> previous = head.Previous;
+            LinkedListNode<T> next = head.Next;
+            if (previous == null)
+            {
+                next.Previous = null;
+            }
+        }
+        public void RemoveTail()
+        {
+            LinkedListNode<T> previous = tail.Previous;
+            LinkedListNode<T> next = tail.Next;
+            if (next == null)
+            {
+                previous.Next = null;
+            }
+        }
+        public  LinkedListNode<T> GetHead()
+        {
+            LinkedListNode<T> previous = head.Previous;
+            if (previous == null)
+            {
+                return head.Value;
+            }
+        }
+        public void Print()
+        {
+            s
+        }
         public bool Remove(T value)
         {
             // calls search function on the value
