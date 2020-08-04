@@ -27,8 +27,8 @@ namespace LinkedList
 
         //}
         public int count = 0;
-        public LinkedListNode<T> Head { get; private set; }
-        public LinkedListNode<T> Tail { get; private set; }
+        public LinkedListNode<T> head { get; private set; }
+        public LinkedListNode<T> tail { get; private set; }
         public void AddHead(T value)
         {
             LinkedListNode<T> adding = new LinkedListNode<T>(value, null, head);
@@ -37,14 +37,15 @@ namespace LinkedList
                 head.Previous = adding;
             }
             head = adding;
-            if (Tail == null)
+            if (tail == null)
             {
                 tail = head;
             }
             count++;
         }
-        public  void AddTaila(T value)
+        public  void AddTails(T value)
         {
+            //Add value to the tail
             if (tail == null)
             {
                 AddHead(value);
@@ -63,6 +64,7 @@ namespace LinkedList
             LinkedListNode<T> Current = head;
             while(Current != null)
             {
+                //
                 if (Current.Value.Equals(value))
                 {
                     return Current;
@@ -73,16 +75,83 @@ namespace LinkedList
         }
         public bool Check(T value)
         {
+            //Search for value and if found return true else false
+            return Search(value) != null; 
+            
+        }
+        public bool isEmpty()
+        {
+            //checks if the count is zero return true else return false
+            if (count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int Size()
+        {
+            return count;
+        }
+
+        public void Insert()
+        {
+
+        }
+        public bool Remove(T value)
+        {
+            // calls search function on the value
+
+            LinkedListNode<T> param = Search(value);
+            // if it was not found, then nothing to remove
+
+            if (param == null)
+            {
+                return false;
+            }
+            LinkedListNode<T> previous = param.Previous;
+            LinkedListNode<T> next = param.Next;
+            // the value is the head
+            if (previous == null)
+            {
+                head = next;
+                if (head != null)
+                {
+                    head.Previous = null;
+                }
+            }
+            else
+            {
+                previous.Next = next;
+            }
+            //the value is the tail   
+            if (next == null)
+            {
+                tail = previous;
+                if (tail != null)
+                {
+                    tail.Next = null;
+                }
+            }
+            else
+            {
+                next.Previous = previous;
+            }
+            count--;
+            return true;
+        }
+        public void Index(T value)
+        {
+            int position = 0;
             LinkedListNode<T> Current = head;
             while(Current != null)
             {
                 if (Current.Value.Equals(value))
                 {
-                    return true;
-                }
-                else
-                {
-                    return false;
+                    position++;
                 }
             }
         }
