@@ -9,13 +9,13 @@ namespace LinkedList
     class GenericStack<T>
     {
         readonly DLinkedList<T> owner = new DLinkedList<T>();
-        public bool IsEmpty()
-        {
+        //public bool IsEmpty()
+        //{
 
-        }
+        //}
         public void Push(T value)
         {
-            owner.AddHead(value);
+            owner.AddTails(value);
         }
         public void Pop()
         {
@@ -23,15 +23,15 @@ namespace LinkedList
         }
         public void Peek()
         {
-
+            owner.GetTail();
         }
         public int Size()
         {
-
+            return owner.count;
         }
         public void Print()
         {
-
+            owner.Print();
         }
     }
 }

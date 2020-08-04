@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -18,7 +19,7 @@ namespace LinkedList
         public LinkedListNode<T>Previous { get; set; }
     }
 
-    public class DLinkedList<T> //: ICollection<T>
+    public class DLinkedList<T> : ICollection<T>
     {
         //public DLinkedList(T head,T tail)
         //{
@@ -29,6 +30,12 @@ namespace LinkedList
         public int count = 0;
         public LinkedListNode<T> head { get; private set; }
         public LinkedListNode<T> tail { get; private set; }
+        public int index { get; private set; }
+
+        public int Count => throw new NotImplementedException();
+
+        public bool IsReadOnly => throw new NotImplementedException();
+
         public void AddHead(T value)
         {
             LinkedListNode<T> adding = new LinkedListNode<T>(value, null, head);
@@ -62,14 +69,17 @@ namespace LinkedList
         public LinkedListNode<T> Search(T value)
         {
             LinkedListNode<T> Current = head;
+            index = -1;
             while(Current != null)
             {
-                //
+                index++;
                 if (Current.Value.Equals(value))
                 {
                     return Current;
                 }
                 Current = Current.Next;
+                
+                
             }
             return null;
         }
@@ -119,17 +129,34 @@ namespace LinkedList
                 previous.Next = null;
             }
         }
-        public  LinkedListNode<T> GetHead()
+        public LinkedListNode<T> GetHead()
         {
-            LinkedListNode<T> previous = head.Previous;
-            if (previous == null)
-            {
-                return head.Value;
-            }
+            return head;
+        }
+        public LinkedListNode<T> GetTail()
+        {
+            return tail;
         }
         public void Print()
         {
-            s
+            LinkedListNode<T> firstNode = head;
+            //LinkedListNode<T> next = T
+            if (firstNode == null)
+            {
+                Console.WriteLine("There is nothing in me!!!");
+            }
+            else 
+            {
+                string result = "";
+                while (firstNode != null)
+                {
+                    result += $"{firstNode.Value}, ";
+                    firstNode = firstNode.Next;
+                }
+                string finalResult = result.Substring(0, result.Length - 2);
+                Console.WriteLine($"{{{finalResult}}}");
+            }
+           
         }
         public bool Remove(T value)
         {
@@ -142,6 +169,7 @@ namespace LinkedList
             {
                 return false;
             }
+
             LinkedListNode<T> previous = param.Previous;
             LinkedListNode<T> next = param.Next;
             // the value is the head
@@ -173,18 +201,41 @@ namespace LinkedList
             count--;
             return true;
         }
-        public void Index(T value)
+        public int Index(T value)
         {
-            int position = 0;
-            LinkedListNode<T> Current = head;
-            while(Current != null)
-            {
-                if (Current.Value.Equals(value))
-                {
-                    position++;
-                }
-            }
+            
+            Search(value);
+            return index;
         }
 
+        public void Add(T item)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
