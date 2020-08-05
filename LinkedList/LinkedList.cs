@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
 namespace LinkedList
 {
     public class LinkedListNode<T>
     {
-        public LinkedListNode(T value, LinkedListNode<T>previous= null, LinkedListNode<T>next=null)
+        public LinkedListNode(T value, LinkedListNode<T> previous = null, LinkedListNode<T> next = null)
         {
             this.Value = value;
             this.Previous = previous;
-            this.Next = next; 
+            this.Next = next;
         }
         public T Value { get; set; }
-        public LinkedListNode<T>Next { get; set; }
-        public LinkedListNode<T>Previous { get; set; }
+        public LinkedListNode<T> Next { get; set; }
+        public LinkedListNode<T> Previous { get; set; }
     }
 
     public class DLinkedList<T> : ICollection<T>
@@ -51,7 +49,7 @@ namespace LinkedList
             count++;
             Console.WriteLine($"The Size is: {count}");
         }
-        public  void AddTails(T value)
+        public void AddTails(T value)
         {
             //Add value to the tail
             if (tail == null)
@@ -67,13 +65,13 @@ namespace LinkedList
                 Console.WriteLine($"The Size is: {count}");
 
             }
-            
+
         }
         public LinkedListNode<T> Search(T value)
         {
             LinkedListNode<T> Current = head;
             index = -1;
-            while(Current != null)
+            while (Current != null)
             {
                 index++;
                 if (Current.Value.Equals(value))
@@ -81,16 +79,16 @@ namespace LinkedList
                     return Current;
                 }
                 Current = Current.Next;
-                
-                
+
+
             }
             return null;
         }
         public bool Check(T value)
         {
             //Search for value and if found return true else false
-            return Search(value) != null; 
-            
+            return Search(value) != null;
+
         }
         public bool isEmpty()
         {
@@ -130,13 +128,13 @@ namespace LinkedList
                 head = next;
                 count--;
                 return true;
-                
+
             }
         }
-           
+
         public bool RemoveTail()
         {
-            
+
             LinkedListNode<T> previous = tail.Previous;
             if (tail == null)
             {
@@ -149,7 +147,7 @@ namespace LinkedList
                 count--;
                 return true;
             }
-            
+
         }
         public LinkedListNode<T> GetHead()
         {
@@ -167,7 +165,7 @@ namespace LinkedList
             {
                 Console.WriteLine("There is nothing in me!!!");
             }
-            else 
+            else
             {
                 string result = "";
                 while (firstNode != null)
@@ -178,7 +176,7 @@ namespace LinkedList
                 string finalResult = result.Substring(0, result.Length - 2);
                 Console.WriteLine($"{{{finalResult}}}");
             }
-           
+
         }
         public bool Remove(T value)
         {
@@ -225,7 +223,7 @@ namespace LinkedList
         }
         public int Index(T value)
         {
-            
+
             Search(value);
             return index;
         }

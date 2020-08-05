@@ -5,20 +5,21 @@ using LinkedList;
 
 namespace LinkedList
 {
-    class GenericQueue<T>
+    public class GenericQueue<T>
     {
-        DLinkedList<T> owner = new DLinkedList<T>();
-        //public bool isEmpty()
-        //{
-
-        //}
+        DLinkedList<T> ow = new DLinkedList<T>();
+        public bool isEmpty()
+        {
+            bool result = (ow.count == 0) ? true : false;
+            return result;
+        }
         public void Enqueue(T value)
         {
-            owner.AddTails(value);
+            ow.AddTails(value);
         }
         public void Dequeue()
         {
-            owner.RemoveHead();
+            ow.RemoveHead();
         }
         //public void Peek()
         //{
@@ -26,11 +27,11 @@ namespace LinkedList
         //}
         public int Size()
         {
-            return owner.count;
+            return ow.count;
         }
         public void Print()
         {
-            owner.Print();
+            ow.Print();
         }
     }
 }

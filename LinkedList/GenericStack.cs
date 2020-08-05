@@ -6,13 +6,14 @@ using LinkedList;
 
 namespace LinkedList
 {
-    class GenericStack<T>
+    public class GenericStack<T>
     {
         readonly DLinkedList<T> owner = new DLinkedList<T>();
-        //public bool IsEmpty()
-        //{
-
-        //}
+        public bool isempty()
+        {
+            bool result = (owner.count == 0) ? true : false;
+            return result;
+        }
         public void Push(T value)
         {
             owner.AddTails(value);
