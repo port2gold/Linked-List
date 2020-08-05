@@ -27,7 +27,7 @@ namespace LinkedList
 
         public void Push(T value)
         {
-            owner.AddTails(value);
+            owner.AddHead(value);
         }
 
         //Removes a value from the top of the stack
@@ -42,7 +42,7 @@ namespace LinkedList
         // Returns the value at the top of the Stack
         public void Peek()
         {
-            owner.GetTail();
+            owner.GetHead();
         }
 
         // Returns the size of the stack
