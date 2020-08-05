@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace LinkedList
 {
     public class LinkedListNode<T>
     {
+        //Link List Node Constructor
+
         public LinkedListNode(T value, LinkedListNode<T> previous = null, LinkedListNode<T> next = null)
         {
             this.Value = value;
@@ -17,14 +20,11 @@ namespace LinkedList
         public LinkedListNode<T> Previous { get; set; }
     }
 
+    // Linked List Class
     public class DLinkedList<T> : ICollection<T>
     {
-        //public DLinkedList(T head,T tail)
-        //{
-        //    this.Head = head;
-        //    this.Tail = tail;
+        //Property Fields 
 
-        //}
         public int count = 0;
         public LinkedListNode<T> head { get; private set; }
         public LinkedListNode<T> tail { get; private set; }
@@ -33,6 +33,8 @@ namespace LinkedList
         public int Count => throw new NotImplementedException();
 
         public bool IsReadOnly => throw new NotImplementedException();
+
+        // Add head Method
 
         public void AddHead(T value)
         {
@@ -49,6 +51,9 @@ namespace LinkedList
             count++;
             Console.WriteLine($"The Size is: {count}");
         }
+
+        //Add Tail method
+
         public void AddTails(T value)
         {
             //Add value to the tail
@@ -67,6 +72,9 @@ namespace LinkedList
             }
 
         }
+
+        // Search value Method
+
         public LinkedListNode<T> Search(T value)
         {
             LinkedListNode<T> Current = head;
@@ -84,12 +92,18 @@ namespace LinkedList
             }
             return null;
         }
+
+        //Check Value method 
+
         public bool Check(T value)
         {
             //Search for value and if found return true else false
             return Search(value) != null;
 
         }
+
+        //Check if the Link list is empty
+
         public bool isEmpty()
         {
             //checks if the count is zero return true else return false
@@ -103,6 +117,9 @@ namespace LinkedList
             }
         }
 
+        // Find the size of the Linked List
+
+
         public int Size()
         {
             return count;
@@ -114,6 +131,10 @@ namespace LinkedList
 
 
         }
+
+        // Remove the head Node of the Linked list 
+
+
         public bool RemoveHead()
         {
             //LinkedListNode<T> previous = head.Previous;
@@ -132,6 +153,9 @@ namespace LinkedList
             }
         }
 
+
+        // Remove the Tail node of the Linked List
+
         public bool RemoveTail()
         {
 
@@ -149,14 +173,23 @@ namespace LinkedList
             }
 
         }
+
+        // Returns  the Head Node of the Linked list
         public LinkedListNode<T> GetHead()
         {
             return head;
         }
+
+        // Returns the  Tail Node of the Linked lIst 
+
         public LinkedListNode<T> GetTail()
         {
             return tail;
         }
+
+        // Print the all the nodes in the linked list 
+
+
         public void Print()
         {
             LinkedListNode<T> firstNode = head;
@@ -178,6 +211,10 @@ namespace LinkedList
             }
 
         }
+
+
+        //Remove the value that was passed into the function
+
         public bool Remove(T value)
         {
             // calls search function on the value
@@ -221,6 +258,11 @@ namespace LinkedList
             count--;
             return true;
         }
+
+
+        // Find the index of the value passed
+
+
         public int Index(T value)
         {
 
