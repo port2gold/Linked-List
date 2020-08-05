@@ -49,6 +49,7 @@ namespace LinkedList
                 tail = head;
             }
             count++;
+            Console.WriteLine($"The Size is: {count}");
         }
         public  void AddTails(T value)
         {
@@ -63,6 +64,8 @@ namespace LinkedList
                 tail.Next = adding;
                 tail = adding;
                 count++;
+                Console.WriteLine($"The Size is: {count}");
+
             }
             
         }
@@ -107,27 +110,46 @@ namespace LinkedList
             return count;
         }
 
-        public void Insert()
+        public void Insert(T value, int index)
         {
+            LinkedListNode<T> adding = new LinkedListNode<T>(value);
+
 
         }
-        public void RemoveHead()
+        public bool RemoveHead()
         {
-            LinkedListNode<T> previous = head.Previous;
+            //LinkedListNode<T> previous = head.Previous;
             LinkedListNode<T> next = head.Next;
-            if (previous == null)
+            if (head == null)
+            {
+                return false;
+            }
+            else
             {
                 next.Previous = null;
+                head = next;
+                count--;
+                return true;
+                
             }
         }
-        public void RemoveTail()
+           
+        public bool RemoveTail()
         {
+            
             LinkedListNode<T> previous = tail.Previous;
-            LinkedListNode<T> next = tail.Next;
-            if (next == null)
+            if (tail == null)
+            {
+                return false;
+            }
+            else
             {
                 previous.Next = null;
+                tail = previous;
+                count--;
+                return true;
             }
+            
         }
         public LinkedListNode<T> GetHead()
         {
